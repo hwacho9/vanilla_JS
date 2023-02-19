@@ -16,19 +16,18 @@ console.log(daysOfWeek);
 console.log(daysOfWeek[5]);
 
 //Add one more day to the array
-daysOfWeek.push("sun")
+daysOfWeek.push("sun");
 
 //object
 const player = {
     name:"nico",
     points: 10,
     fat: true,
-    
-}
-console.log(player.name) //player["namae"] 도 똑같은 역활
+};
+console.log(player.name); //player["namae"] 도 똑같은 역활
 player.fat = false //porperty 수정
 player.lastName = "potato" //property 추가
-console.log(player)
+console.log(player);
 
 //function
 function sayHello(nameOfPerson, age) {
@@ -47,3 +46,10 @@ const person = {
 
 console.log(person.name);
 person.sayHi("lynn");
+
+const calculater = {
+    add: function (a,b) {
+        console.log(a + b);
+    }
+};
+calculater.add(5,1);
