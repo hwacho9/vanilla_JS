@@ -55,10 +55,23 @@ const calculater = {
 calculater.add(5,1);
 
 //returns
-const age = 96;
+const krage = 96;
 function caculateKrAge(ageOfForeigner){
     return ageOfForeigner + 2;
 };
 
-const krAge = calculateKrAge(age);
-console.log(krAge);l
+const krAge = caculateKrAge(krage);
+console.log(krAge);
+
+// functions 은 내부에서부터 외부로 실행된다
+const age = parseInt(prompt("how old are you?"));   //parseInt string -> int 변환
+// !== : 같지 않음을 확인 , === : 값과 data type 까지 같은지 비교 
+if (isNaN(age) || age < 0) {
+    console.log("Please write a real positive number");
+} else if(age < 18) {
+    console.log("You are too young.");
+} else if(age >= 18 && age <= 50){
+    console.log("You can drink");
+} else if(age > 50 && age<=80) {
+    console.log("You should exercise");
+}
