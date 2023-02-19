@@ -31,3 +31,19 @@ player.lastName = "potato" //property 추가
 console.log(player)
 
 //function
+function sayHello(nameOfPerson, age) {
+    console.log("Hello my name is " + nameOfPerson +" and I'm " + age + "years old");
+};
+
+sayHello("CHO", 10);
+sayHello("dal", 23);
+
+const person = {
+    name: "nico",
+    sayHi: function (otherPersonName) {
+        console.log("hello " + otherPersonName + " nice to meet you");
+    },
+};
+
+console.log(person.name);
+person.sayHi("lynn");
