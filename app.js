@@ -53,3 +53,12 @@ const calculater = {
     }
 };
 calculater.add(5,1);
+
+//returns
+const age = 96;
+function caculateKrAge(ageOfForeigner){
+    return ageOfForeigner + 2;
+};
+
+const krAge = calculateKrAge(age);
+console.log(krAge);l
