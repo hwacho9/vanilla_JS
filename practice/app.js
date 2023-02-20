@@ -12,10 +12,35 @@ const h1 = document.querySelector(".hello h1");
 console.log(h1);
 
 function handleTitleClick(){
-    h1.style.color = "blue";
-    console.log("title was clicked!");
+    /*  JS에 직접적으로 css를 변동하는 것은 좋지 않다
+    const currentColor = h1.style.color;
+    let newColor;
+    if(currentColor === "blue"){
+        newColor = "tomato";
+    } else {
+        newColor = "blue";
+    }
+    h1.style.color = newColor;
+    */
+    const clickedClass = "clicked";
+    h1.classList.toggle(clickedClass); 
+    // toggle은 h1 classList 에 clicked 이 있으면 제거 없으면 추가한다
+    /* toggle 이 없었을때
+    if(h1.classList.contains(clickedClass)) { //clickedClass 가 h1 classList 에 포함 되있는지 체크
+        h1.classList.remove(clickedClass);
+    } else {
+        h1.classList.add(clickedClass);
+    }
+    */
+
 }
 
+h1.addEventListener("click", handleTitleClick); // addEventListener를 통해 event 를 감지한다 
+// handleTitleClick 에 ()를 붙히지 않음으로서 event가 작동됬을 때 함수를 실행할지 정한다
+// h1(element 이름) html element mdn 을 검색해서 Web APIs 가 포함되있는 사이트로 들어간다
+
+
+/* 여러가지 EVENT
 function handleMouseEnter(){
     h1.innerText = "Mouse is here!";
     console.log("mouse is here!");
@@ -42,9 +67,6 @@ function handleWindowOnline(){
     alert("ALL GOOD")
 }
 
-h1.addEventListener("click", handleTitleClick); // addEventListener를 통해 event 를 감지한다 
-// handleTitleClick 에 ()를 붙히지 않음으로서 event가 작동됬을 때 함수를 실행할지 정한다
-// h1(element 이름) html element mdn 을 검색해서 Web APIs 가 포함되있는 사이트로 들어간다
 h1.addEventListener("mouseenter", handleMouseEnter);
 h1.addEventListener("mouseleave", handleMouseLeave);
 
@@ -52,3 +74,5 @@ window.addEventListener("resize", handleWindowResize);
 window.addEventListener("copy", handleWindowCopy);
 window.addEventListener("offline", handleWindowOffline);
 window.addEventListener("online", handleWindowOnline);
+*/
+
