@@ -1,2 +1,43 @@
 const toDoForm = document.getElementById("todo-form");
+const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
+
+const toDos = [];
+
+function saveToDos() {
+    localStorage.setItem("todos", JSON.stringify(toDos)); //toDos Array의 내용을 localStorage에 넣는다.
+    //JSON.stringfy() 는 JS object 나 array또는 어떤 JS코드건 간에 string 으로 바꿔준다
+
+}
+
+function deleteToDo(event) {
+    // console.log(event.target.parentElement.innerText);
+    /* tareget 은 클릭된 HTMl element 이다, HTML element 에는 하나 이상의 
+    property 가있다 parentElement는 클릭된 element 의 부모이다 
+    */
+   const li = event.target.parentElement; // 우리가 삭제하고 싶은 li
+   li.remove();
+}
+
+function paintToDo(newTodo) {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.innerText = newTodo;
+    const button = document.createElement("button");
+    button.innerText = "❌";
+    button.addEventListener("click", deleteToDo);
+    li.appendChild(span); //li 에 span을 넣어 준다
+    li.appendChild(button);
+    toDoList.appendChild(li);
+}
+
+function handleToDoSubmit(event) {
+    event.preventDefault();
+    const newTodo = toDoInput.value;
+    toDoInput.value = "";
+    toDos.push(newTodo); //array 에 푸쉬 
+    paintToDo(newTodo);
+    saveToDos();
+}
+
+toDoForm.addEventListener("submit", handleToDoSubmit);
