@@ -21,7 +21,7 @@ function deleteToDo(event) {
     */
     const li = event.target.parentElement; // 우리가 삭제하고 싶은 li
     li.remove();
-    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
+    toDos = toDos.filter(toDo => toDo.id  !== parseInt(li.id));
     //우리가 클릭한 li.id와 다른 toDo는 남김
     saveToDos();
 }
