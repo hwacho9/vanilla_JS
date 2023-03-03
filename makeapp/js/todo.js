@@ -19,14 +19,18 @@ function deleteToDo(event) {
     /* tareget 은 클릭된 HTMl element 이다, HTML element 에는 하나 이상의 
     property 가있다 parentElement는 클릭된 element 의 부모이다 
     */
-   const li = event.target.parentElement; // 우리가 삭제하고 싶은 li
-   li.remove();
+    const li = event.target.parentElement; // 우리가 삭제하고 싶은 li
+    li.remove();
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
+    //우리가 클릭한 li.id와 다른 toDo는 남김
+    saveToDos();
 }
 
 function paintToDo(newTodo) {
     const li = document.createElement("li");
+    li.id = newTodo.id; // HTMl에 li id를 제공해야한다 
     const span = document.createElement("span");
-    span.innerText = newTodo;
+    span.innerText = newTodo.text; //obj를 받지만 text만 출력 
     const button = document.createElement("button");
     button.innerText = "❌";
     button.addEventListener("click", deleteToDo);
@@ -39,16 +43,22 @@ function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    toDos.push(newTodo); //array 에 푸쉬 
-    paintToDo(newTodo);
+    const newTodoObj = {
+        text:newTodo,
+        id : Date.now(), //random id 제공
+    };
+    toDos.push(newTodoObj); //array 에 푸쉬 
+    paintToDo(newTodoObj);
     saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
+/*
 function sayHello(item) { //forEach에서 item 를 공짜로 넘겨준다
     console.log("this is the turn of", item);
 }
+*/
 
 const savedToDos = localStorage.getItem(TODOS_KEY);  
 
